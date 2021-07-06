@@ -46,7 +46,6 @@ Example: refact: reduced code for checking for null values on array
 Example: feat&fix: added readme file, fixed typo in readme file
 ```
 
-
 # Design Inspiration
 
-[Dribble Shot](https://dribbble.com/shots/5311911-Skagen)
+[Dribble Shot](https://dribbble.com/shots/15984530-Mobile-App-UI)
