@@ -63,7 +63,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   child: SafeArea(
                     child: IconButton(
                       onPressed: () => Share.share(
-                        'check out this product https://https://classifiedsserver.herokuapp.com/api/v1/public/products${product.id}',
+                        'check out this product https://https://classifiedsserver.herokuapp.com/api/v1/public/products/${product.id}',
                       ),
                       icon: Icon(Icons.share, size: 30),
                     ),
