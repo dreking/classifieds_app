@@ -72,56 +72,71 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CustomInputCard(
-                        child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Email',
-                            border: InputBorder.none,
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter email';
-                            } else if (!EmailValidator.validate(value)) {
-                              return 'Email is invalid';
-                            } else {
-                              return null;
-                            }
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _user.email = value;
-                            });
-                          },
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            CustomInputCard(
+                              child: TextFormField(
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                decoration: InputDecoration(
+                                  labelText: 'Enter Email',
+                                  border: InputBorder.none,
+                                ),
+                                keyboardType: TextInputType.emailAddress,
+                                textInputAction: TextInputAction.next,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Enter email';
+                                  } else if (!EmailValidator.validate(value)) {
+                                    return 'Email is invalid';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _user.email = value;
+                                  });
+                                },
+                              ),
+                            ),
+                            CustomInputCard(
+                              child: TextFormField(
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                decoration: InputDecoration(
+                                  labelText: 'Enter Password',
+                                  border: InputBorder.none,
+                                ),
+                                obscureText: true,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Enter a password';
+                                  } else if (value.length < 6) {
+                                    return 'Password must be at least 6 characters';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _user.password = value;
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      CustomInputCard(
-                        child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Password',
-                            border: InputBorder.none,
-                          ),
-                          obscureText: true,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter a password';
-                            } else if (value.length < 6) {
-                              return 'Password must be at least 6 characters';
-                            } else {
-                              return null;
-                            }
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _user.password = value;
-                            });
-                          },
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: CustomButton(
+                          onTap: _saveForm,
+                          text: 'Login',
+                          icon: Icons.login,
                         ),
                       ),
-                      CustomButton(onTap: _saveForm, text: 'Login'),
                     ],
                   ),
                 ),
