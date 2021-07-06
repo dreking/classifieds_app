@@ -13,29 +13,31 @@ class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: 300,
       width: 150,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Hero(
             tag: product.id!,
-            child: Card(
-              elevation: 15,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'assets/images/placeholder.png',
-                  image: getImageUrl(product.imageUrl!),
-                  height: 150,
-                  fit: BoxFit.cover,
-                ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: FadeInImage.assetNetwork(
+                placeholder: 'assets/images/placeholder.png',
+                image: getImageUrl(product.imageUrl!),
+                height: 200,
+                fit: BoxFit.fitHeight,
               ),
             ),
           ),
           SizedBox(height: 10),
           Text(
             product.name!,
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+          SizedBox(height: 10),
+          Text(
+            'RWF ' + product.price!.toStringAsFixed(2),
             style: Theme.of(context).textTheme.bodyText2,
           ),
         ],
