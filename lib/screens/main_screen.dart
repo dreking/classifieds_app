@@ -49,14 +49,18 @@ class _MainScreenState extends State<MainScreen> {
       body: _isLoading
           ? CustomLoading()
           : SliderMenuContainer(
-              appBarColor: Theme.of(context).primaryColor,
+              appBarColor: Colors.white,
               appBarHeight: 90,
-              drawerIconColor: Colors.white,
+              drawerIconColor: Theme.of(context).primaryColor,
               key: _key,
               sliderMenuOpenSize: 200,
               title: Text(
                 'Classifields App',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
               ),
               sliderMenu: MainDrawer(),
               sliderMain: MainProducts(),

@@ -83,7 +83,13 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Product'),
+        title: Text(
+          'Add Product',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
       ),
       body: _isLoading
           ? CustomLoading()
@@ -238,7 +244,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(15),
                       child: CustomButton(
                         onTap: _saveForm,
                         text: 'Save',

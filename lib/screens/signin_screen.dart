@@ -60,7 +60,13 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign In'),
+        title: Text(
+          'Sign In',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
       ),
       body: _isLoading
           ? CustomLoading()
@@ -129,13 +135,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: CustomButton(
-                          onTap: _saveForm,
-                          text: 'Login',
-                          icon: Icons.login,
-                        ),
+                      CustomButton(
+                        onTap: _saveForm,
+                        text: 'Login',
+                        icon: Icons.login,
                       ),
                     ],
                   ),

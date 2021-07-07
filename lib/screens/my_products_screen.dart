@@ -1,3 +1,4 @@
+import 'package:classifieds_app/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,7 +53,13 @@ class _MyProductsScreenState extends State<MyProductsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Products'),
+        title: Text(
+          'My Products',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -67,6 +74,12 @@ class _MyProductsScreenState extends State<MyProductsScreen> {
           : ListView.builder(
               itemCount: myProducts.length,
               itemBuilder: (context, index) => ListTile(
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    ProductDetailsScreen.routeName,
+                    arguments: myProducts[index],
+                  );
+                },
                 leading: FadeInImage.assetNetwork(
                   placeholder: 'assets/images/placeholder.png',
                   image: getImageUrl(myProducts[index].imageUrl!),

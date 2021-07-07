@@ -23,13 +23,15 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Classifieds App',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
-          primaryColor: Color.fromRGBO(81, 77, 84, 1),
+          primaryColor: Colors.blueGrey,
           appBarTheme: AppBarTheme(
-            backgroundColor: Color.fromRGBO(81, 77, 84, 1),
+            backgroundColor: Colors.white12,
             centerTitle: true,
             elevation: 0,
+            iconTheme: IconThemeData(color: Colors.blueGrey),
           ),
           textTheme: TextTheme(
             bodyText1: TextStyle(
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
             headline4: TextStyle(fontWeight: FontWeight.w500),
             headline5: TextStyle(
               fontWeight: FontWeight.w500,
-              color: Color.fromRGBO(61, 151, 202, 1),
+              color: Colors.blueGrey,
             ),
           ),
         ),

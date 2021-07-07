@@ -24,52 +24,61 @@ class ProductDetailsScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            height: 350,
-            child: Stack(
-              children: [
-                Hero(
-                  tag: product.id!,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
+          Material(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50),
+                bottomRight: Radius.circular(50),
+              ),
+            ),
+            elevation: 5,
+            child: Container(
+              height: 350,
+              child: Stack(
+                children: [
+                  Hero(
+                    tag: product.id!,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(50),
+                        bottomRight: Radius.circular(50),
+                      ),
+                      child: SafeArea(
+                        child: FadeInImage.assetNetwork(
+                          placeholder: 'assets/images/placeholder.png',
+                          image: getImageUrl(product.imageUrl!),
+                          height: 350,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
+                  ),
+                  Positioned(
+                    top: 0,
                     child: SafeArea(
-                      child: FadeInImage.assetNetwork(
-                        placeholder: 'assets/images/placeholder.png',
-                        image: getImageUrl(product.imageUrl!),
-                        height: 350,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
+                      child: IconButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: Icon(
+                          Icons.chevron_left,
+                          size: 40,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 0,
-                  child: SafeArea(
-                    child: IconButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      icon: Icon(
-                        Icons.chevron_left,
-                        size: 40,
+                  Positioned(
+                    right: 10,
+                    child: SafeArea(
+                      child: IconButton(
+                        onPressed: () => Share.share(
+                          'check out this product https://https://classifiedsserver.herokuapp.com/api/v1/public/products/${product.id}',
+                        ),
+                        icon: Icon(Icons.share, size: 30),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  right: 10,
-                  child: SafeArea(
-                    child: IconButton(
-                      onPressed: () => Share.share(
-                        'check out this product https://https://classifiedsserver.herokuapp.com/api/v1/public/products/${product.id}',
-                      ),
-                      icon: Icon(Icons.share, size: 30),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -112,7 +121,7 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(15),
             child: CustomButton(
               onTap: () {},
               text: 'Add to Cart',
