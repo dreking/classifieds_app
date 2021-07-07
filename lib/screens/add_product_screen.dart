@@ -38,12 +38,18 @@ class _AddProductScreenState extends State<AddProductScreen> {
     final isValid = _form.currentState!.validate();
     if (!isValid) return;
 
-    if (_product.image == null) {
+    String validations = '';
+    if (_product.manufactureDate == null)
+      validations += 'Add Manufacturing Date\n';
+    if (_product.manufactureDate == null)
+      validations += 'Choose a product Image\n';
+
+    if (validations.isNotEmpty) {
       return await showDialog(
         context: context,
         builder: (context) => CustomDialog(
-          title: 'Image Status',
-          text: 'Choose a product image',
+          title: 'Validation Errors',
+          text: validations,
           status: false,
           onTap: () => Navigator.of(context).pop(),
         ),
